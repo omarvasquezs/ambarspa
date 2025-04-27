@@ -137,6 +137,55 @@ nav ul li a {
     animation-delay: 0.9s; /* Last element to appear */
 }
 
+/* Auto-hover animation for WhatsApp button in hero section */
+.hero .whatsapp-button.animate-hero {
+    animation: fadeInUp 1s ease forwards 0.9s, autoHover 3s ease 1.9s;
+}
+
+/* Auto hover animation */
+@keyframes autoHover {
+    0% {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+    20% {
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+    }
+    40% {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+    100% {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+}
+
+/* Pulse effect for the WhatsApp button's ::before element */
+.hero .whatsapp-button.animate-hero::before {
+    animation: autoPulse 3s ease 1.9s;
+}
+
+@keyframes autoPulse {
+    0% {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(-100%);
+    }
+    20% {
+        opacity: 1;
+        transform: rotate(-45deg) translateY(150%);
+    }
+    40% {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(-100%);
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(-100%);
+    }
+}
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -466,6 +515,18 @@ footer {
     display: block; /* Show the button */
     opacity: 0.8;
     visibility: visible;
+}
+
+/* Auto hover class toggled by JavaScript */
+.hero .whatsapp-button.auto-hover-active {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+}
+
+.hero .whatsapp-button.auto-hover-active::before {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(150%);
+    transition: all 1.5s ease;
 }
 
 /* Responsive Design */

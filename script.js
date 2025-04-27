@@ -79,4 +79,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Periodically trigger the WhatsApp button hover effect in the hero section
+    const heroWhatsAppBtn = document.querySelector('.hero .whatsapp-button');
+    
+    // Set up automatic periodic animation (every 8 seconds after initial animation)
+    setTimeout(() => {
+        // After the initial animations finish, start periodic animations
+        setInterval(() => {
+            // Trigger hover effect by toggling classes
+            heroWhatsAppBtn.classList.add('auto-hover-active');
+            
+            // Remove class after animation duration
+            setTimeout(() => {
+                heroWhatsAppBtn.classList.remove('auto-hover-active');
+            }, 3000); // Match the animation duration
+        }, 8000); // Interval between animations
+    }, 5000); // Start after initial animations complete
+
 });
