@@ -51,6 +51,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial check in case the page loads already scrolled down
     scrollFunction();
 
-    // Smooth scroll for the button is now handled by the updated scrollLinks logic above.
+    // Reset hero animations when scrolling back to top
+    const heroElements = document.querySelectorAll('.hero .animate-hero');
+    
+    backToTopButton.addEventListener('click', () => {
+        // Remove animation classes
+        heroElements.forEach(el => {
+            el.style.opacity = 0;
+            el.style.animation = 'none';
+        });
+        
+        // Force reflow to restart animations
+        setTimeout(() => {
+            heroElements.forEach(el => {
+                el.style.animation = '';
+                el.style.opacity = '';
+            });
+        }, 100);
+    });
+
+    // Optional: Parallax effect for hero section
+    const heroSection = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+        if(window.scrollY < window.innerHeight) {
+            const scrolled = window.scrollY;
+            heroSection.style.backgroundPositionY = `${scrolled * 0.5}px`;
+        }
+    });
 
 });
