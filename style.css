@@ -1,0 +1,483 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #4a4a4a;
+    line-height: 1.6;
+    background-color: #fdfaf6; /* Soft beige background */
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: #8d6e63; /* Soft brown */
+}
+
+a {
+    text-decoration: none;
+    color: #a1887f; /* Lighter brown for links */
+}
+
+a:hover {
+    color: #5d4037; /* Darker brown on hover */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Header & Navigation */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #5d4037; /* Darker brown for main logo */
+}
+.logo p {
+    margin: -5px 0 0 0;
+    font-size: 0.9em;
+    color: #a1887f;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    background: url('images/hero-background.jpg') no-repeat center center/cover; /* Add a suitable hero image */
+    color: #ffffff;
+    padding: 120px 20px;
+    position: relative;
+    text-align: center;
+}
+
+.hero::before { /* Overlay for better text readability */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #a1887f; /* Lighter brown */
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    /* transition: background-color 0.3s ease, transform 0.2s ease; */ /* Remove background transition */
+    transition: color 0.3s ease, transform 0.2s ease; /* Keep color and transform */
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    position: relative; /* Needed for pseudo-element */
+    overflow: hidden;   /* Needed for pseudo-element */
+    z-index: 1;         /* Needed for pseudo-element */
+}
+
+/* Add ::before for holographic effect */
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        0deg,
+        transparent,
+        transparent 40%,
+        rgba(255, 255, 255, 0.3) 50%, /* White highlight */
+        transparent 60%,
+        transparent
+    );
+    transform: rotate(-45deg) translateY(-100%); /* Start above */
+    transition: transform 0.6s ease;
+    z-index: 1; /* Behind text */
+    opacity: 0; /* Start hidden */
+}
+
+.cta-button span { /* If text is wrapped in span, ensure it's above */
+    position: relative;
+    z-index: 2;
+}
+
+.cta-button:hover {
+    /* background-color: #8d6e63; */ /* Base color remains */
+    transform: scale(1.05) translateY(-2px); /* Combine scale and lift */
+    box-shadow: 0 0 15px rgba(161, 136, 127, 0.6); /* Glow with button color */
+}
+
+/* Add hover state for ::before */
+.cta-button:hover::before {
+    transform: rotate(-45deg) translateY(150%); /* Sweep down */
+    opacity: 1; /* Make visible */
+}
+
+/* Services Section */
+.services {
+    background-color: #ffffff;
+}
+
+.services h2 {
+    margin-bottom: 40px;
+    font-size: 2.5em;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-item {
+    background-color: #fdfaf6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.service-item img {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    aspect-ratio: 16 / 10; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure image covers the area */
+}
+
+.service-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+.more-services {
+    margin-top: 30px;
+    font-style: italic;
+    color: #8d6e63;
+}
+
+/* About Section */
+.about {
+    background-color: #efebe9; /* Slightly different beige */
+}
+
+.about h2 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.about p {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+
+.about-image {
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Contact Section */
+.contact {
+    background-color: #ffffff;
+}
+
+.contact h2 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.contact-info a {
+    font-weight: 600;
+}
+
+.social-media {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.social-media p {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.social-media a {
+    margin: 0 10px;
+    font-size: 1.8em; /* Decrease size for icon - was 2.5em */
+    display: inline-block;
+    /* Remove button-like styles */
+    /* padding: 5px 10px; */
+    /* border: 1px solid #a1887f; */
+    /* border-radius: 5px; */
+    transition: color 0.3s ease; /* Keep color transition */
+}
+
+.social-media a:hover {
+    /* background-color: #a1887f; */ /* Remove background change */
+    color: #5d4037; /* Keep hover color change */
+}
+
+.whatsapp-button {
+    margin-top: 20px;
+    background-color: #25D366; /* WhatsApp green */
+    color: #ffffff; /* Ensure text is white */
+    padding: 10px 20px; /* Adjust padding for text and icon */
+    font-size: 1em; /* Reset font size for text, icon size is controlled by <i> */
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    gap: 8px; /* Add space between icon and text */
+    border-radius: 25px; /* Match other cta-button */
+    font-weight: 600; /* Match other cta-button */
+    position: relative; /* Needed for pseudo-element positioning */
+    overflow: hidden; /* Hide pseudo-element overflow */
+    z-index: 1; /* Ensure button is clickable */
+    transition: color 0.3s ease, transform 0.2s ease; /* Remove background-color transition */
+}
+
+.whatsapp-button i,
+.whatsapp-button span { /* Assuming text is not wrapped, otherwise target text node */
+    position: relative;
+    z-index: 2; /* Keep icon and text above pseudo-element */
+}
+
+/* Remove previous ::after styles */
+.whatsapp-button::after {
+    display: none; /* Effectively remove the old effect */
+}
+
+/* Holographic effect ::before */
+.whatsapp-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        0deg,
+        transparent,
+        transparent 40%,
+        rgba(255, 255, 255, 0.3) 50%, /* Lighter green/white highlight */
+        transparent 60%,
+        transparent
+    );
+    transform: rotate(-45deg) translateY(-100%); /* Start above */
+    transition: transform 0.6s ease;
+    z-index: 1; /* Behind text/icon */
+    opacity: 0; /* Start hidden */
+}
+
+.whatsapp-button:hover {
+    /* background-color: #1FAF38; */ /* Base color remains */
+    transform: scale(1.05) translateY(-2px); /* Add scale and keep lift */
+    color: #ffffff; /* Keep text white on hover */
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.6); /* Add subtle green glow */
+}
+
+/* Remove previous ::after hover styles */
+.whatsapp-button:hover::after {
+   display: none;
+}
+
+.whatsapp-button:hover::before {
+    transform: rotate(-45deg) translateY(150%); /* Sweep further down */
+    opacity: 1; /* Make visible */
+}
+
+/* Map Title Styling */
+.map-title {
+    font-size: 2em; /* Adjust size as needed */
+    margin-bottom: 20px;
+    color: #8d6e63; /* Match other headings */
+}
+
+/* Map Styling */
+.map-container {
+    margin-bottom: 40px; /* Add some space below the map */
+    position: relative;
+    overflow: hidden;
+    padding-top: 25%; /* Adjusted for even shorter height (was 35%) */
+    width: 100%; /* Make container full width */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Optional: subtle shadow */
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; /* Remove default iframe border */
+}
+
+
+/* Footer */
+footer {
+    background-color: #5d4037; /* Dark brown */
+    color: #fdfaf6;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* Back to Top Button */
+#back-to-top-btn {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 25px; /* Adjusted position */
+    right: 25px;  /* Adjusted position */
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #a1887f; /* Lighter brown */
+    color: white;
+    cursor: pointer;
+    padding: 15px; /* Increased padding */
+    border-radius: 5px; /* Make it squared (slight rounding) */
+    font-size: 24px; /* Increased icon size */
+    transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    line-height: 1; /* Ensure icon is centered vertically */
+}
+
+#back-to-top-btn:hover {
+    background-color: #8d6e63; /* Soft brown */
+    opacity: 1;
+}
+
+#back-to-top-btn.show {
+    display: block; /* Show the button */
+    opacity: 0.8;
+    visibility: visible;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        margin-top: 15px;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: 2.2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr; /* Stack services on smaller screens */
+    }
+
+    section {
+        padding: 40px 15px;
+    }
+}
+
+/* Simple fade-in animation for sections */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0; /* Start hidden */
+}
+
+/* Delay animation for subsequent sections */
+#servicios { animation-delay: 0.2s; }
+#nosotros { animation-delay: 0.4s; }
+#contacto { animation-delay: 0.6s; }
+
+/* Ensure sections are visible if JS is disabled or animations aren't supported */
+body:not(.js-loading) section {
+    opacity: 1;
+}
