@@ -1,0 +1,69 @@
+// Helper classes
+
+// Text styles
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-dark {
+  color: $primary-dark;
+}
+
+// Background colors
+.bg-light {
+  background-color: $bg-color;
+}
+
+.bg-primary {
+  background-color: $primary-color;
+  color: $white;
+}
+
+// Spacing helpers
+.mt-1 { margin-top: $spacer-small; }
+.mt-2 { margin-top: $spacer; }
+.mt-3 { margin-top: $spacer-large; }
+
+.mb-1 { margin-bottom: $spacer-small; }
+.mb-2 { margin-bottom: $spacer; }
+.mb-3 { margin-bottom: $spacer-large; }
+
+.my-1 { 
+  margin-top: $spacer-small;
+  margin-bottom: $spacer-small;
+}
+.my-2 { 
+  margin-top: $spacer;
+  margin-bottom: $spacer;
+}
+.my-3 { 
+  margin-top: $spacer-large;
+  margin-bottom: $spacer-large;
+}
+
+// Visibility
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+@include mq(tablet) {
+  .d-md-none {
+    display: none !important;
+  }
+  
+  .d-md-block {
+    display: block !important;
+  }
+}

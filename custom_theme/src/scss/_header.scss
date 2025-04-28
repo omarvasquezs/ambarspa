@@ -1,0 +1,59 @@
+// Header styles
+
+.navbar {
+  background-color: $white;
+  box-shadow: $shadow-sm;
+  transition: $transition;
+  padding: 10px 0;
+  
+  .navbar-brand {
+    padding: 0;
+    
+    .logo {
+      h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        color: $primary-dark;
+        font-family: $playfair;
+      }
+      
+      p {
+        margin: -5px 0 0 0;
+        font-size: 0.9rem;
+        color: $primary-light;
+        font-family: $poppins;
+      }
+    }
+  }
+  
+  .navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    outline: none;
+    
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  
+  .navbar-nav {
+    .nav-link {
+      color: $primary-color;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      margin: 0 0.2rem;
+      transition: $transition;
+      
+      &:hover,
+      &:focus {
+        color: $primary-dark;
+      }
+    }
+  }
+  
+  @include mq-max(tablet) {
+    .navbar-collapse {
+      margin-top: 1rem;
+    }
+  }
+}

@@ -1,96 +1,99 @@
 /* General Styles */
+:root {
+    --primary-color: #8d6e63;
+    --primary-dark: #5d4037;
+    --primary-light: #a1887f;
+    --bg-color: #fdfaf6;
+    --text-color: #4a4a4a;
+    --white: #ffffff;
+    --whatsapp: #25D366;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: #4a4a4a;
+    color: var(--text-color);
     line-height: 1.6;
-    background-color: #fdfaf6; /* Soft beige background */
+    background-color: var(--bg-color);
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
-    color: #8d6e63; /* Soft brown */
+    color: var(--primary-color);
 }
 
 a {
     text-decoration: none;
-    color: #a1887f; /* Lighter brown for links */
+    color: var(--primary-light);
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #5d4037; /* Darker brown on hover */
+    color: var(--primary-dark);
+    text-decoration: none;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+.section-light {
+    background-color: #f5f0eb;
 }
 
-section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-/* Header & Navigation */
-header {
-    background-color: #ffffff;
+/* Navbar Styling */
+.navbar {
+    background-color: var(--white);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 10px 20px;
+    transition: background-color 0.3s ease;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+.navbar-brand {
+    padding: 0;
 }
 
 .logo h1 {
     margin: 0;
-    font-size: 1.8em;
-    color: #5d4037; /* Darker brown for main logo */
+    font-size: 1.8rem;
+    color: var(--primary-dark);
 }
+
 .logo p {
     margin: -5px 0 0 0;
-    font-size: 0.9em;
-    color: #a1887f;
+    font-size: 0.9rem;
+    color: var(--primary-light);
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
+.navbar-toggler {
+    border: none;
+    outline: none;
 }
 
-nav ul li {
-    margin-left: 25px;
+.navbar-toggler:focus {
+    box-shadow: none;
 }
 
-nav ul li a {
+.navbar-nav .nav-link {
+    color: var(--primary-color);
     font-weight: 600;
-    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: var(--primary-dark);
 }
 
 /* Hero Section */
 .hero {
-    background: url('images/hero-background.jpg') no-repeat center center/cover; /* Add a suitable hero image */
-    color: #ffffff;
-    padding: 120px 20px;
+    background: url('images/hero-background.jpg') no-repeat center center/cover;
+    color: var(--white);
+    padding-top: 150px;
+    padding-bottom: 100px;
     position: relative;
     text-align: center;
-    overflow: hidden; /* For background animation */
-    animation: heroBgZoom 20s ease infinite alternate; /* Subtle zoom effect */
+    overflow: hidden;
+    animation: heroBgZoom 20s ease infinite alternate;
+    min-height: 500px;
 }
 
-/* Hero background animation */
 @keyframes heroBgZoom {
     0% {
         background-size: 100% auto;
@@ -100,7 +103,7 @@ nav ul li a {
     }
 }
 
-.hero::before { /* Overlay for better text readability */
+.hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -114,11 +117,19 @@ nav ul li a {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 700px;
-    margin: 0 auto;
 }
 
-/* Hero animations for text and button */
+.hero h2 {
+    font-size: 3rem;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
+/* Animations */
 .animate-hero {
     opacity: 0;
     transform: translateY(30px);
@@ -126,64 +137,15 @@ nav ul li a {
 }
 
 .hero h2.animate-hero {
-    animation-delay: 0.3s; /* First element to appear */
+    animation-delay: 0.3s;
 }
 
 .hero p.animate-hero {
-    animation-delay: 0.6s; /* Second element to appear */
+    animation-delay: 0.6s;
 }
 
-.hero .cta-button.animate-hero {
-    animation-delay: 0.9s; /* Last element to appear */
-}
-
-/* Auto-hover animation for WhatsApp button in hero section */
-.hero .whatsapp-button.animate-hero {
-    animation: fadeInUp 1s ease forwards 0.9s, autoHover 3s ease 1.9s;
-}
-
-/* Auto hover animation */
-@keyframes autoHover {
-    0% {
-        transform: translateY(0);
-        box-shadow: none;
-    }
-    20% {
-        transform: scale(1.05) translateY(-2px);
-        box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
-    }
-    40% {
-        transform: translateY(0);
-        box-shadow: none;
-    }
-    100% {
-        transform: translateY(0);
-        box-shadow: none;
-    }
-}
-
-/* Pulse effect for the WhatsApp button's ::before element */
-.hero .whatsapp-button.animate-hero::before {
-    animation: autoPulse 3s ease 1.9s;
-}
-
-@keyframes autoPulse {
-    0% {
-        opacity: 0;
-        transform: rotate(-45deg) translateY(-100%);
-    }
-    20% {
-        opacity: 1;
-        transform: rotate(-45deg) translateY(150%);
-    }
-    40% {
-        opacity: 0;
-        transform: rotate(-45deg) translateY(-100%);
-    }
-    100% {
-        opacity: 0;
-        transform: rotate(-45deg) translateY(-100%);
-    }
+.hero .btn.animate-hero {
+    animation-delay: 0.9s;
 }
 
 @keyframes fadeInUp {
@@ -197,36 +159,43 @@ nav ul li a {
     }
 }
 
-.hero h2 {
-    font-size: 3em;
-    margin-bottom: 15px;
-    color: #ffffff;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-
-.hero p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-}
-
-.cta-button {
-    background-color: #a1887f; /* Lighter brown */
-    color: #ffffff;
-    padding: 12px 25px;
+/* Buttons */
+.btn {
     border-radius: 25px;
     font-weight: 600;
-    /* transition: background-color 0.3s ease, transform 0.2s ease; */ /* Remove background transition */
-    transition: color 0.3s ease, transform 0.2s ease; /* Keep color and transform */
-    display: inline-block;
-    border: none;
+    padding: 10px 25px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    position: relative; /* Needed for pseudo-element */
-    overflow: hidden;   /* Needed for pseudo-element */
-    z-index: 1;         /* Needed for pseudo-element */
 }
 
-/* Add ::before for holographic effect */
-.cta-button::before {
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-whatsapp {
+    background-color: var(--whatsapp);
+    color: white;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1da850;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
+    transform: translateY(-5px) scale(1.03);
+}
+
+.btn-whatsapp::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -237,350 +206,252 @@ nav ul li a {
         0deg,
         transparent,
         transparent 40%,
-        rgba(255, 255, 255, 0.3) 50%, /* White highlight */
+        rgba(255, 255, 255, 0.7) 50%,
         transparent 60%,
         transparent
     );
-    transform: rotate(-45deg) translateY(-100%); /* Start above */
+    transform: rotate(-45deg) translateY(-100%);
     transition: transform 0.6s ease;
-    z-index: 1; /* Behind text */
-    opacity: 0; /* Start hidden */
+    z-index: 0;
+    opacity: 0;
 }
 
-.cta-button span { /* If text is wrapped in span, ensure it's above */
+.btn-whatsapp::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.btn-whatsapp:hover::before {
+    transform: rotate(-45deg) translateY(150%);
+    opacity: 1;
+}
+
+.btn-whatsapp:hover::after {
+    opacity: 1;
+}
+
+.btn-whatsapp.auto-highlight {
+    animation: whatsappPulse 2s ease;
+}
+
+.btn-whatsapp.auto-highlight::before {
+    animation: whatsappSweep 2s ease forwards;
+}
+
+@keyframes whatsappPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(37, 211, 102, 0.8);
+    }
+}
+
+@keyframes whatsappSweep {
+    0% {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(-100%);
+    }
+    50% {
+        opacity: 1;
+        transform: rotate(-45deg) translateY(150%);
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(300%);
+    }
+}
+
+.btn-whatsapp span {
     position: relative;
     z-index: 2;
+    font-weight: 600;
+    letter-spacing: 0.2px;
 }
 
-.cta-button:hover {
-    /* background-color: #8d6e63; */ /* Base color remains */
-    transform: scale(1.05) translateY(-2px); /* Combine scale and lift */
-    box-shadow: 0 0 15px rgba(161, 136, 127, 0.6); /* Glow with button color */
+.btn-whatsapp i {
+    font-size: 1.3rem;
+    margin-right: 5px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
 }
 
-/* Add hover state for ::before */
-.cta-button:hover::before {
-    transform: rotate(-45deg) translateY(150%); /* Sweep down */
-    opacity: 1; /* Make visible */
+.btn-whatsapp:hover i {
+    animation: wiggle 0.5s ease;
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
 }
 
 /* Services Section */
-.services {
-    background-color: #ffffff;
-}
-
-.services h2 {
-    margin-bottom: 40px;
-    font-size: 2.5em;
-}
-
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.service-item {
-    background-color: #fdfaf6;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+.service-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.service-item:hover {
+.service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.service-item img {
-    border-radius: 5px;
-    margin-bottom: 15px;
-    aspect-ratio: 16 / 10; /* Maintain aspect ratio */
-    object-fit: cover; /* Ensure image covers the area */
+.service-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
 }
 
-.service-item h3 {
-    margin-top: 0;
+.service-card .card-title {
+    font-size: 1.25rem;
     margin-bottom: 10px;
-    font-size: 1.4em;
 }
 
 .more-services {
-    margin-top: 30px;
     font-style: italic;
-    color: #8d6e63;
+    color: var(--primary-light);
 }
 
 /* About Section */
-.about {
-    background-color: #efebe9; /* Slightly different beige */
-}
-
-.about h2 {
-    margin-bottom: 20px;
-    font-size: 2.5em;
-}
-
-.about p {
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-}
-
 .about-image {
-    max-width: 600px;
-    margin: 0 auto;
-    border-radius: 8px;
+    margin-top: 30px;
+    max-width: 100%;
+}
+
+/* Location Section */
+.map-title {
+    color: var(--primary-color);
+}
+
+.address-line {
+    font-size: 1.1rem;
+}
+
+.map-container {
+    margin-top: 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* Contact Section */
-.contact {
-    background-color: #ffffff;
+.contact-info {
+    font-size: 1.1rem;
 }
 
-.contact h2 {
-    margin-bottom: 20px;
-    font-size: 2.5em;
-}
-
-.contact-info p {
-    margin: 10px 0;
-    font-size: 1.1em;
-}
-
-.contact-info a {
+.contact-link {
+    color: var(--primary-color);
     font-weight: 600;
 }
 
-.social-media {
-    margin-top: 30px;
-    margin-bottom: 30px;
+.contact-link:hover {
+    color: var(--primary-dark);
 }
 
-.social-media p {
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.social-media a {
+.social-icon {
+    font-size: 1.5rem;
     margin: 0 10px;
-    font-size: 1.8em; /* Decrease size for icon - was 2.5em */
-    display: inline-block;
-    /* Remove button-like styles */
-    /* padding: 5px 10px; */
-    /* border: 1px solid #a1887f; */
-    /* border-radius: 5px; */
-    transition: color 0.3s ease; /* Keep color transition */
+    color: var(--primary-color);
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.social-media a:hover {
-    /* background-color: #a1887f; */ /* Remove background change */
-    color: #5d4037; /* Keep hover color change */
+.social-icon:hover {
+    color: var(--primary-dark);
+    transform: scale(1.2);
 }
-
-.whatsapp-button {
-    margin-top: 20px;
-    background-color: #25D366; /* WhatsApp green */
-    color: #ffffff; /* Ensure text is white */
-    padding: 10px 20px; /* Adjust padding for text and icon */
-    font-size: 1em; /* Reset font size for text, icon size is controlled by <i> */
-    display: inline-flex; /* Align icon and text */
-    align-items: center;
-    gap: 8px; /* Add space between icon and text */
-    border-radius: 25px; /* Match other cta-button */
-    font-weight: 600; /* Match other cta-button */
-    position: relative; /* Needed for pseudo-element positioning */
-    overflow: hidden; /* Hide pseudo-element overflow */
-    z-index: 1; /* Ensure button is clickable */
-    transition: color 0.3s ease, transform 0.2s ease; /* Remove background-color transition */
-}
-
-.whatsapp-button i,
-.whatsapp-button span { /* Assuming text is not wrapped, otherwise target text node */
-    position: relative;
-    z-index: 2; /* Keep icon and text above pseudo-element */
-}
-
-/* Remove previous ::after styles */
-.whatsapp-button::after {
-    display: none; /* Effectively remove the old effect */
-}
-
-/* Holographic effect ::before */
-.whatsapp-button::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        0deg,
-        transparent,
-        transparent 40%,
-        rgba(255, 255, 255, 0.3) 50%, /* Lighter green/white highlight */
-        transparent 60%,
-        transparent
-    );
-    transform: rotate(-45deg) translateY(-100%); /* Start above */
-    transition: transform 0.6s ease;
-    z-index: 1; /* Behind text/icon */
-    opacity: 0; /* Start hidden */
-}
-
-.whatsapp-button:hover {
-    /* background-color: #1FAF38; */ /* Base color remains */
-    transform: scale(1.05) translateY(-2px); /* Add scale and keep lift */
-    color: #ffffff; /* Keep text white on hover */
-    box-shadow: 0 0 15px rgba(37, 211, 102, 0.6); /* Add subtle green glow */
-}
-
-/* Remove previous ::after hover styles */
-.whatsapp-button:hover::after {
-   display: none;
-}
-
-.whatsapp-button:hover::before {
-    transform: rotate(-45deg) translateY(150%); /* Sweep further down */
-    opacity: 1; /* Make visible */
-}
-
-/* Map Title Styling */
-.map-title {
-    font-size: 2em; /* Adjust size as needed */
-    margin-bottom: 20px;
-    color: #8d6e63; /* Match other headings */
-}
-
-/* Map Styling */
-.map-container {
-    margin-bottom: 40px; /* Add some space below the map */
-    position: relative;
-    overflow: hidden;
-    padding-top: 25%; /* Adjusted for even shorter height (was 35%) */
-    width: 100%; /* Make container full width */
-    border-radius: 8px; /* Optional: rounded corners */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Optional: subtle shadow */
-}
-
-.map-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0; /* Remove default iframe border */
-}
-
 
 /* Footer */
 footer {
-    background-color: #5d4037; /* Dark brown */
-    color: #fdfaf6;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
+    background-color: var(--primary-dark);
+    color: var(--white);
+    padding: 20px 0;
+}
+
+.footer-back-to-top {
+    color: var(--white);
+    font-size: 1.2rem;
+    margin: 10px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.footer-back-to-top:hover {
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+.footer-site {
+    font-size: 0.8rem;
+    opacity: 0.7;
 }
 
 /* Back to Top Button */
 #back-to-top-btn {
-    display: none; /* Hidden by default */
     position: fixed;
-    bottom: 25px; /* Adjusted position */
-    right: 25px;  /* Adjusted position */
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: #a1887f; /* Lighter brown */
-    color: white;
-    cursor: pointer;
-    padding: 15px; /* Increased padding */
-    border-radius: 5px; /* Make it squared (slight rounding) */
-    font-size: 24px; /* Increased icon size */
-    transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     opacity: 0;
     visibility: hidden;
-    line-height: 1; /* Ensure icon is centered vertically */
-}
-
-#back-to-top-btn:hover {
-    background-color: #8d6e63; /* Soft brown */
-    opacity: 1;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 999;
 }
 
 #back-to-top-btn.show {
-    display: block; /* Show the button */
-    opacity: 0.8;
-    visibility: visible;
-}
-
-/* Auto hover class toggled by JavaScript */
-.hero .whatsapp-button.auto-hover-active {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
-}
-
-.hero .whatsapp-button.auto-hover-active::before {
     opacity: 1;
-    transform: rotate(-45deg) translateY(150%);
-    transition: all 1.5s ease;
+    visibility: visible;
+    transform: translateY(0);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+#back-to-top-btn:hover {
+    background-color: var(--primary-dark);
+}
 
-    nav ul {
-        margin-top: 15px;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-        text-align: center;
-    }
-
+/* Responsive styles */
+@media (max-width: 767.98px) {
     .hero h2 {
-        font-size: 2.2em;
+        font-size: 2.2rem;
     }
+    
+    .service-card {
+        margin-bottom: 20px;
+    }
+}
 
+@media (max-width: 575.98px) {
+    .hero {
+        padding-top: 120px;
+        padding-bottom: 80px;
+    }
+    
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    
     .hero p {
-        font-size: 1em;
+        font-size: 1rem;
     }
-
-    .service-grid {
-        grid-template-columns: 1fr; /* Stack services on smaller screens */
-    }
-
+    
     section {
         padding: 40px 15px;
     }
-}
-
-/* Simple fade-in animation for sections */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-section {
-  animation: fadeIn 0.8s ease-out forwards;
-  opacity: 0; /* Start hidden */
-}
-
-/* Delay animation for subsequent sections */
-#servicios { animation-delay: 0.2s; }
-#nosotros { animation-delay: 0.4s; }
-#contacto { animation-delay: 0.6s; }
-
-/* Ensure sections are visible if JS is disabled or animations aren't supported */
-body:not(.js-loading) section {
-    opacity: 1;
 }

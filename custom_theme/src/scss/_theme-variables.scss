@@ -1,0 +1,42 @@
+// Theme variables
+
+// Colors
+$primary-color: #8d6e63;
+$primary-dark: #5d4037;
+$primary-light: #a1887f;
+$bg-color: #fdfaf6;
+$text-color: #4a4a4a;
+$white: #ffffff;
+$whatsapp: #25D366;
+
+// Typography
+$playfair: 'Playfair Display', serif;
+$poppins: 'Poppins', sans-serif;
+
+$font-size-h1: 3em;
+$font-size-h2: 2.5em;
+$font-size-h3: 1.8em;
+$font-size-h4: 1.5em;
+$font-size-h5: 1.25em;
+$font-size-h6: 1em;
+$font-size-base: 16px;
+$font-size-large: 1.2em;
+$font-size-small: 0.9em;
+$font-size-xsmall: 0.8em;
+
+// Spacers for margin/padding/etc
+$spacer: 30px;
+$spacer-small: 15px;
+$spacer-large: 60px;
+
+// Standard border radius
+$border-radius: 25px;
+$border-radius-sm: 10px;
+
+// Transition default
+$transition: all 0.3s ease;
+
+// Box shadows
+$shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
+$shadow-md: 0 5px 15px rgba(0,0,0,0.1);
+$shadow-lg: 0 8px 20px rgba(0,0,0,0.15);

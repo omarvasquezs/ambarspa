@@ -1,0 +1,463 @@
+// Content styles
+
+// General styles
+body {
+  font-family: $poppins;
+  color: $text-color;
+  line-height: 1.6;
+  background-color: $bg-color;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $playfair;
+  color: $primary-color;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-light;
+  transition: $transition;
+  
+  &:hover {
+    color: $primary-dark;
+    text-decoration: none;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  padding: 60px 0;
+}
+
+.section-light {
+  background-color: #f5f0eb;
+}
+
+// Hero Section
+.hero {
+  background: url('../images/hero-background.jpg') no-repeat center center/cover;
+  color: $white;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  animation: heroBgZoom 20s ease infinite alternate;
+  min-height: 500px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    
+    h2 {
+      font-size: 3rem;
+      color: $white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      margin-bottom: 15px;
+    }
+    
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+  }
+  
+  @include mq-max(mobile) {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    
+    .hero-content {
+      h2 {
+        font-size: 2rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Animate Hero Elements
+.animate-hero {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.hero {
+  h2.animate-hero {
+    animation-delay: 0.3s;
+  }
+  
+  p.animate-hero {
+    animation-delay: 0.6s;
+  }
+  
+  .btn.animate-hero {
+    animation-delay: 0.9s;
+    animation-fill-mode: forwards;
+  }
+}
+
+// Buttons
+.btn {
+  @include button-base;
+  
+  &-primary {
+    background-color: $primary-color;
+    color: $white;
+    border: none;
+    
+    &:hover {
+      background-color: $primary-dark;
+      box-shadow: $shadow-md;
+    }
+  }
+  
+  &-whatsapp {
+    background-color: $whatsapp;
+    color: $white !important; /* Important to override any inherited styles */
+    border: none;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: darken($whatsapp, 10%);
+      box-shadow: 0 5px 15px rgba($whatsapp, 0.4);
+      transform: translateY(-5px) scale(1.03);
+      color: $white !important; /* Important to override any inherited styles */
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        0deg,
+        transparent,
+        transparent 40%,
+        rgba(255, 255, 255, 0.7) 50%,
+        transparent 60%,
+        transparent
+      );
+      transform: rotate(-45deg) translateY(-100%);
+      transition: transform 0.6s ease;
+      z-index: 0;
+      opacity: 0;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+    
+    &:hover::before {
+      transform: rotate(-45deg) translateY(150%);
+      opacity: 1;
+    }
+    
+    &:hover::after {
+      opacity: 1;
+    }
+    
+    &.auto-highlight {
+      animation: whatsappPulse 2s ease;
+      
+      &::before {
+        animation: whatsappSweep 2s ease forwards;
+      }
+    }
+    
+    /* Add a specific style for the hero button */
+    .hero & {
+      font-size: 1.1rem;
+      padding: 12px 28px;
+      
+      i {
+        font-size: 1.4rem;
+      }
+    }
+    
+    span {
+      position: relative;
+      z-index: 2;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      color: $white !important; /* Important to override any inherited styles */
+    }
+    
+    i {
+      font-size: 1.3rem;
+      position: relative;
+      z-index: 2;
+      color: $white !important; /* Important to override any inherited styles */
+      margin-right: 5px;
+      
+      @include mq-max(mobile) {
+        font-size: 1.1rem;
+      }
+    }
+    
+    &:hover i {
+      animation: wiggle 0.5s ease;
+    }
+  }
+}
+
+// Service Cards
+.service-card {
+  border: none;
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: $transition;
+  margin-bottom: 20px;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-md;
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: $primary-color;
+  }
+  
+  .card-text {
+    color: $text-color;
+  }
+}
+
+// About Section
+.about-image {
+  margin-top: 30px;
+  border-radius: $border-radius-sm;
+  box-shadow: $shadow-md;
+}
+
+// Location Section
+.map-title {
+  color: $primary-color;
+  margin-bottom: 20px;
+}
+
+.address-line {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.map-container {
+  margin: 0;
+  padding: 0;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+  height: 450px; // Fixed height for better appearance
+  width: 100%;
+  
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+// Adjust container-fluid for map section
+section#ubicacion {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+// Contact Section
+.contact-info {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  
+  i {
+    color: $primary-color;
+    margin-right: 10px;
+  }
+}
+
+.contact-link {
+  color: $primary-color;
+  font-weight: 600;
+  transition: $transition;
+  
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  margin: 0 10px;
+  color: $primary-color;
+  transition: $transition;
+  
+  &:hover {
+    color: $primary-dark;
+    transform: scale(1.2);
+  }
+}
+
+// Back to Top Button
+#back-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: $primary-color;
+  color: $white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 999;
+  
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  &:hover {
+    background-color: $primary-dark;
+  }
+}
+
+/* Special style for hero WhatsApp button */
+.hero-whatsapp-btn {
+  padding: 14px 30px !important;
+  font-size: 1.15rem !important;
+  box-shadow: 0 4px 15px rgba($whatsapp, 0.3);
+  
+  i {
+    font-size: 1.5rem !important;
+    margin-right: 8px !important;
+  }
+  
+  &:hover {
+    transform: translateY(-7px) scale(1.05) !important;
+    box-shadow: 0 7px 20px rgba($whatsapp, 0.5) !important;
+  }
+  
+  &.animate-hero {
+    animation: fadeInUpAndBounce 1.2s ease forwards 0.9s;
+  }
+}
+
+@include keyframes(fadeInUpAndBounce) {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-7px);
+  }
+  85% {
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+
+// Animations
+@include keyframes(fadeInUp) {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@include keyframes(heroBgZoom) {
+  0% {
+    background-size: 100% auto;
+  }
+  100% {
+    background-size: 110% auto;
+  }
+}
+
+@include keyframes(whatsappPulse) {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba($whatsapp, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba($whatsapp, 0.8);
+  }
+}
+
+@include keyframes(whatsappSweep) {
+  0% {
+    opacity: 0;
+    transform: rotate(-45deg) translateY(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(150%);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-45deg) translateY(300%);
+  }
+}
+
+@include keyframes(wiggle) {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}

@@ -1,0 +1,111 @@
+// Mixins
+
+// Breakpoints
+$mobile-small: 375px;
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$desktop-large: 1200px;
+
+$breakpoints: (
+  'mobile-small': $mobile-small,
+  'mobile': $mobile,
+  'tablet': $tablet,
+  'desktop': $desktop,
+  'desktop-large': $desktop-large
+);
+
+// Usage:
+// @include mq(mobile) { ... }
+// @include mq(tablet) { ... }
+// @include mq(desktop) { ... }
+
+@mixin mq($breakpoint) {
+  // Retrieves the value from the key
+  $value: map-get($breakpoints, $breakpoint);
+
+  // If the key exists in the map
+  @if $value != null {
+    // Prints a media query based on the value
+    @media screen and (min-width: calc($value + 0.1px)) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+// Usage:
+// @include mq-max(mobile) { ... }
+// @include mq-max(tablet) { ... }
+// @include mq-max(desktop) { ... }
+
+@mixin mq-max($breakpoint) {
+  // Retrieves the value from the key
+  $value: map-get($breakpoints, $breakpoint);
+
+  // If the key exists in the map
+  @if $value != null {
+    // Prints a media query based on the value
+    @media screen and (max-width: $value) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+// Flexbox mixins
+@mixin flex($justify: flex-start, $align: stretch, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+// Button styles
+@mixin button-base {
+  border-radius: $border-radius;
+  font-weight: 600;
+  padding: 10px 25px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+// Animation mixins
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($animation) {
+  animation: $animation;
+}
+
+// Transform mixins
+@mixin transform($transforms) {
+  transform: $transforms;
+}
+
+// Transition mixin
+@mixin transition($transition...) {
+  transition: $transition;
+}

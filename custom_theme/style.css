@@ -1,0 +1,594 @@
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-primary {
+  color: #8d6e63;
+}
+
+.text-dark {
+  color: #5d4037;
+}
+
+.bg-light {
+  background-color: #fdfaf6;
+}
+
+.bg-primary {
+  background-color: #8d6e63;
+  color: #ffffff;
+}
+
+.mt-1 {
+  margin-top: 15px;
+}
+
+.mt-2 {
+  margin-top: 30px;
+}
+
+.mt-3 {
+  margin-top: 60px;
+}
+
+.mb-1 {
+  margin-bottom: 15px;
+}
+
+.mb-2 {
+  margin-bottom: 30px;
+}
+
+.mb-3 {
+  margin-bottom: 60px;
+}
+
+.my-1 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.my-2 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.my-3 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+@media screen and (min-width: 768.1px) {
+  .d-md-none {
+    display: none !important;
+  }
+  .d-md-block {
+    display: block !important;
+  }
+}
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  padding: 10px 0;
+}
+.navbar .navbar-brand {
+  padding: 0;
+}
+.navbar .navbar-brand .logo h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #5d4037;
+  font-family: "Playfair Display", serif;
+}
+.navbar .navbar-brand .logo p {
+  margin: -5px 0 0 0;
+  font-size: 0.9rem;
+  color: #a1887f;
+  font-family: "Poppins", sans-serif;
+}
+.navbar .navbar-toggler {
+  border: none;
+  padding: 0.25rem 0.5rem;
+  outline: none;
+}
+.navbar .navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar .navbar-nav .nav-link {
+  color: #8d6e63;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  margin: 0 0.2rem;
+  transition: all 0.3s ease;
+}
+.navbar .navbar-nav .nav-link:hover, .navbar .navbar-nav .nav-link:focus {
+  color: #5d4037;
+}
+@media screen and (max-width: 768px) {
+  .navbar .navbar-collapse {
+    margin-top: 1rem;
+  }
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #4a4a4a;
+  line-height: 1.6;
+  background-color: #fdfaf6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
+  color: #8d6e63;
+}
+
+a {
+  text-decoration: none;
+  color: #a1887f;
+  transition: all 0.3s ease;
+}
+a:hover {
+  color: #5d4037;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  padding: 60px 0;
+}
+
+.section-light {
+  background-color: #f5f0eb;
+}
+
+.hero {
+  background: url("../images/hero-background.jpg") no-repeat center center/cover;
+  color: #ffffff;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  animation: heroBgZoom 20s ease infinite alternate;
+  min-height: 500px;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.hero .hero-content {
+  position: relative;
+  z-index: 2;
+}
+.hero .hero-content h2 {
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 15px;
+}
+.hero .hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 576px) {
+  .hero {
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+  .hero .hero-content h2 {
+    font-size: 2rem;
+  }
+  .hero .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+.animate-hero {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.hero h2.animate-hero {
+  animation-delay: 0.3s;
+}
+.hero p.animate-hero {
+  animation-delay: 0.6s;
+}
+.hero .btn.animate-hero {
+  animation-delay: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+.btn {
+  border-radius: 25px;
+  font-weight: 600;
+  padding: 10px 25px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+.btn:hover {
+  transform: translateY(-3px);
+}
+.btn-primary {
+  background-color: #8d6e63;
+  color: #ffffff;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #5d4037;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.btn-whatsapp {
+  background-color: #25D366;
+  color: #ffffff !important; /* Important to override any inherited styles */
+  border: none;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  /* Add a specific style for the hero button */
+}
+.btn-whatsapp:hover {
+  background-color: #1da851;
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+  transform: translateY(-5px) scale(1.03);
+  color: #ffffff !important; /* Important to override any inherited styles */
+}
+.btn-whatsapp::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, transparent 40%, rgba(255, 255, 255, 0.7) 50%, transparent 60%, transparent);
+  transform: rotate(-45deg) translateY(-100%);
+  transition: transform 0.6s ease;
+  z-index: 0;
+  opacity: 0;
+}
+.btn-whatsapp::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+.btn-whatsapp:hover::before {
+  transform: rotate(-45deg) translateY(150%);
+  opacity: 1;
+}
+.btn-whatsapp:hover::after {
+  opacity: 1;
+}
+.btn-whatsapp.auto-highlight {
+  animation: whatsappPulse 2s ease;
+}
+.btn-whatsapp.auto-highlight::before {
+  animation: whatsappSweep 2s ease forwards;
+}
+.hero .btn-whatsapp {
+  font-size: 1.1rem;
+  padding: 12px 28px;
+}
+.hero .btn-whatsapp i {
+  font-size: 1.4rem;
+}
+.btn-whatsapp span {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #ffffff !important; /* Important to override any inherited styles */
+}
+.btn-whatsapp i {
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 2;
+  color: #ffffff !important; /* Important to override any inherited styles */
+  margin-right: 5px;
+}
+@media screen and (max-width: 576px) {
+  .btn-whatsapp i {
+    font-size: 1.1rem;
+  }
+}
+.btn-whatsapp:hover i {
+  animation: wiggle 0.5s ease;
+}
+
+.service-card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.service-card .card-img-top {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.service-card .card-title {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #8d6e63;
+}
+.service-card .card-text {
+  color: #4a4a4a;
+}
+
+.about-image {
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-title {
+  color: #8d6e63;
+  margin-bottom: 20px;
+}
+
+.address-line {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.map-container {
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 450px;
+  width: 100%;
+}
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+section#ubicacion .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.contact-info {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+.contact-info i {
+  color: #8d6e63;
+  margin-right: 10px;
+}
+
+.contact-link {
+  color: #8d6e63;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.contact-link:hover {
+  color: #5d4037;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  margin: 0 10px;
+  color: #8d6e63;
+  transition: all 0.3s ease;
+}
+.social-icon:hover {
+  color: #5d4037;
+  transform: scale(1.2);
+}
+
+#back-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #8d6e63;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+#back-to-top-btn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+#back-to-top-btn:hover {
+  background-color: #5d4037;
+}
+
+/* Special style for hero WhatsApp button */
+.hero-whatsapp-btn {
+  padding: 14px 30px !important;
+  font-size: 1.15rem !important;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+.hero-whatsapp-btn i {
+  font-size: 1.5rem !important;
+  margin-right: 8px !important;
+}
+.hero-whatsapp-btn:hover {
+  transform: translateY(-7px) scale(1.05) !important;
+  box-shadow: 0 7px 20px rgba(37, 211, 102, 0.5) !important;
+}
+.hero-whatsapp-btn.animate-hero {
+  animation: fadeInUpAndBounce 1.2s ease forwards 0.9s;
+}
+
+@keyframes fadeInUpAndBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-7px);
+  }
+  85% {
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes heroBgZoom {
+  0% {
+    background-size: 100% auto;
+  }
+  100% {
+    background-size: 110% auto;
+  }
+}
+@keyframes whatsappPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
+  }
+}
+@keyframes whatsappSweep {
+  0% {
+    opacity: 0;
+    transform: rotate(-45deg) translateY(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(150%);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-45deg) translateY(300%);
+  }
+}
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+footer {
+  background-color: #5d4037;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+}
+footer .footer-back-to-top {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin: 10px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+footer .footer-back-to-top:hover {
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+footer p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.font-playfair {
+  font-family: "Playfair Display", serif;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-weight-light {
+  font-weight: 300;
+}
+
+.font-weight-regular {
+  font-weight: 400;
+}
+
+.font-weight-bold {
+  font-weight: 600;
+}
+
+.font-small {
+  font-size: 0.9em;
+}
+
+.font-regular {
+  font-size: 16px;
+}
+
+.font-large {
+  font-size: 1.2em;
+}

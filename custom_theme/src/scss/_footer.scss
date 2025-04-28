@@ -1,0 +1,26 @@
+// Footer styles
+
+footer {
+  background-color: $primary-dark;
+  color: $white;
+  padding: 20px 0;
+  text-align: center;
+  
+  .footer-back-to-top {
+    color: $white;
+    font-size: 1.2rem;
+    margin: 10px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      color: $white;
+      transform: translateY(-3px);
+    }
+  }
+  
+  p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+}
