@@ -32,6 +32,14 @@ img {
 
 section {
   padding: 60px 0;
+  
+  @include mq-max(mobile) {
+    padding: 40px 0;
+  }
+  
+  @include mq-max(mobile-small) {
+    padding: 30px 0;
+  }
 }
 
 .section-light {
@@ -40,7 +48,7 @@ section {
 
 // Hero Section
 .hero {
-  background: url('../images/hero-background.jpg') no-repeat center center/cover;
+  background: url('../../images/hero-background.jpg') no-repeat center center/cover;
   color: $white;
   padding-top: 150px;
   padding-bottom: 100px;
@@ -48,7 +56,9 @@ section {
   text-align: center;
   overflow: hidden;
   animation: heroBgZoom 20s ease infinite alternate;
-  min-height: 500px;
+  height: 100vh; /* Use viewport height instead of min-height */
+  display: flex;
+  align-items: center;
   
   &::before {
     content: '';
@@ -79,16 +89,32 @@ section {
   }
   
   @include mq-max(mobile) {
-    padding-top: 120px;
-    padding-bottom: 80px;
+    padding-top: 85px;
+    padding-bottom: 40px;
+    height: 100vh; /* Ensure full viewport height on mobile */
     
     .hero-content {
+      width: 100%;
+      padding: 0 15px;
+      
       h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
       }
       
       p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  
+  @include mq-max(mobile-small) {
+    padding-top: 75px;
+    
+    .hero-content {
+      h2 {
+        font-size: 1.6rem;
       }
     }
   }
@@ -265,6 +291,27 @@ section {
   .card-text {
     color: $text-color;
   }
+  
+  @include mq-max(mobile) {
+    margin-bottom: 15px;
+    
+    .card-img-top {
+      height: 160px;
+    }
+    
+    .card-title {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    
+    .card-text {
+      font-size: 0.9rem;
+    }
+    
+    .card-body {
+      padding: 1rem;
+    }
+  }
 }
 
 // About Section
@@ -298,6 +345,14 @@ section {
     height: 100%;
     border: 0;
   }
+  
+  @include mq-max(mobile) {
+    height: 350px;
+  }
+  
+  @include mq-max(mobile-small) {
+    height: 300px;
+  }
 }
 
 // Adjust container-fluid for map section
@@ -316,6 +371,15 @@ section#ubicacion {
   i {
     color: $primary-color;
     margin-right: 10px;
+  }
+  
+  @include mq-max(mobile) {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    
+    p {
+      margin-bottom: 15px;
+    }
   }
 }
 
@@ -338,6 +402,11 @@ section#ubicacion {
   &:hover {
     color: $primary-dark;
     transform: scale(1.2);
+  }
+  
+  @include mq-max(mobile) {
+    font-size: 1.3rem;
+    margin: 0 8px;
   }
 }
 
@@ -370,6 +439,14 @@ section#ubicacion {
   &:hover {
     background-color: $primary-dark;
   }
+  
+  @include mq-max(mobile) {
+    width: 35px;
+    height: 35px;
+    bottom: 15px;
+    right: 15px;
+    font-size: 0.9rem;
+  }
 }
 
 /* Special style for hero WhatsApp button */
@@ -391,6 +468,31 @@ section#ubicacion {
   &.animate-hero {
     animation: fadeInUpAndBounce 1.2s ease forwards 0.9s;
   }
+  
+  @include mq-max(mobile) {
+    padding: 10px 20px !important;
+    font-size: 1rem !important;
+    width: auto;
+    max-width: 90%;
+    
+    i {
+      font-size: 1.2rem !important;
+      margin-right: 5px !important;
+    }
+    
+    &:hover, &:active {
+      transform: translateY(-5px) scale(1.03) !important;
+    }
+  }
+  
+  @include mq-max(mobile-small) {
+    padding: 8px 15px !important;
+    font-size: 0.9rem !important;
+    
+    i {
+      font-size: 1.1rem !important;
+    }
+  }
 }
 
 @include keyframes(fadeInUpAndBounce) {
@@ -408,6 +510,24 @@ section#ubicacion {
   100% {
     opacity: 1;
     transform: translateY(-5px);
+  }
+}
+
+@include keyframes(fadeInUpAndBounceSmall) {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+  85% {
+    transform: translateY(-1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-2px);
   }
 }
 
@@ -460,4 +580,211 @@ section#ubicacion {
   0%, 100% { transform: rotate(0); }
   25% { transform: rotate(-10deg); }
   75% { transform: rotate(10deg); }
+}
+
+/* Mobile-specific styles */
+.is-mobile {
+  .hero {
+    /* Disable complex animations on mobile for better performance */
+    animation: none !important;
+    
+    /* Adjust the hero-whatsapp-btn for better mobile experience */
+    .hero-whatsapp-btn {
+      &.animate-hero {
+        animation: fadeInUpAndBounceSmall 1s ease forwards 0.7s;
+      }
+    }
+  }
+  
+  /* Simpler animations for mobile */
+  .animate-hero {
+    animation-duration: 0.7s !important;
+  }
+  
+  /* Reduce box-shadow intensity on mobile for better performance */
+  .service-card, .map-container, .about-image {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* Scroll Down Indicator */
+.scroll-down-container {
+  position: absolute;
+  bottom: 40px; // Moved up slightly
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 20;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards 1.5s;
+}
+
+.scroll-down-arrow {
+  display: inline-block;
+  position: relative;
+  height: 80px; // Increased height
+  padding-top: 30px; // Adjusted padding
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer; // Add pointer cursor
+
+  &:hover {
+    transform: scale(1.05); // Reduced scale effect
+
+    .chevron {
+      border-color: rgba($white, 0.9); // Keep slightly transparent
+      box-shadow: 0 0 6px rgba($white, 0.3); // Reduced glow effect
+
+      &:before, &:after {
+        border-color: rgba($white, 0.9); // Keep slightly transparent
+      }
+    }
+
+    .scroll-text {
+      opacity: 1;
+      transform: translateY(2px); // Slight move on hover
+    }
+  }
+
+  .scroll-text {
+    display: block;
+    color: $white;
+    font-size: 0.95rem; // Increased font size
+    letter-spacing: 0.15rem; // Increased letter spacing
+    text-transform: uppercase;
+    opacity: 0.8; // Slightly more visible
+    transition: all 0.3s ease;
+    margin-top: 8px; // Increased margin
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4); // Stronger shadow
+  }
+}
+
+.chevron {
+  position: absolute;
+  width: 36px; // Increased width
+  height: 10px; // Increased height
+  opacity: 0;
+  transform: scale3d(0.5, 0.5, 0.5);
+  animation: move 3s ease-out infinite;
+  left: 50%; // Center horizontally
+  margin-left: -18px; // Adjust for width
+
+  &:first-child {
+    animation: move 3s ease-out 1s infinite;
+  }
+
+  &:nth-child(2) {
+    animation: move 3s ease-out 2s infinite;
+  }
+
+  &:before,
+  &:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 51%;
+    background: transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; // Add transition
+  }
+
+  &:before {
+    left: 0;
+    transform: skew(0deg, 30deg);
+    border-top: 3px solid rgba($white, 0.8); // Thicker border
+  }
+
+  &:after {
+    right: 0;
+    width: 50%;
+    transform: skew(0deg, -30deg);
+    border-top: 3px solid rgba($white, 0.8); // Thicker border
+  }
+}
+
+@keyframes move {
+  25% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(35px); // Increased travel distance
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(45px); // Increased travel distance
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(65px) scale3d(0.5, 0.5, 0.5); // Increased travel distance
+  }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Mobile-specific adjustments for scroll indicator */
+@include mq-max(mobile) {
+  .scroll-down-container {
+    bottom: 25px; // Adjusted mobile position
+  }
+
+  .scroll-down-arrow {
+    height: 60px; // Adjusted mobile height
+    padding-top: 20px;
+
+    .scroll-text {
+      font-size: 0.8rem; // Adjusted mobile font size
+      margin-top: 5px;
+    }
+  }
+
+  .chevron {
+    width: 28px; // Adjusted mobile width
+    height: 8px; // Adjusted mobile height
+    margin-left: -14px; // Adjust for mobile width
+
+    &:before, &:after {
+      border-top-width: 2px; // Adjusted mobile border
+    }
+  }
+
+  @keyframes move { // Mobile animation needs adjustment too
+    25% {
+      opacity: 1;
+    }
+    33% {
+      opacity: 1;
+      transform: translateY(25px);
+    }
+    67% {
+      opacity: 1;
+      transform: translateY(35px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(50px) scale3d(0.5, 0.5, 0.5);
+    }
+  }
+}
+
+/* Pulsing animation for the scroll indicator */
+.pulse-attention .scroll-text {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.8; // Match base opacity
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.8; // Match base opacity
+    transform: scale(1);
+  }
 }

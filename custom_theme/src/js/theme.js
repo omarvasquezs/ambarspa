@@ -3,13 +3,22 @@
 
     $(document).ready(function () {
         console.log("Ambar Spa website loaded.");
+        
+        // Add a responsive body class
+        if (window.innerWidth < 576) {
+            $('body').addClass('is-mobile');
+        } else if (window.innerWidth < 768) {
+            $('body').addClass('is-tablet');
+        } else {
+            $('body').addClass('is-desktop');
+        }
 
         // Initialize Bootstrap tooltips
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
         // Smooth scrolling for navigation links
-        const scrollLinks = document.querySelectorAll('.navbar-nav .nav-link, #back-to-top-btn, .footer-back-to-top');
+        const scrollLinks = document.querySelectorAll('.navbar-nav .nav-link, #back-to-top-btn, .footer-back-to-top, .scroll-down-arrow');
 
         scrollLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -22,8 +31,15 @@
                     if (targetElement) {
                         // Calculate offset with Bootstrap navbar height
                         const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        
+                        // Add extra offset for mobile to prevent content being hidden
+                        let extraOffset = 0;
+                        if (window.innerWidth < 576) {
+                            extraOffset = 15; // Extra pixels on mobile
+                        }
+                        
                         const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+                        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - extraOffset;
 
                         window.scrollTo({
                             top: offsetPosition,
@@ -84,14 +100,16 @@
             }, 100);
         });
 
-        // Optional: Parallax effect for hero section
+        // Optional: Parallax effect for hero section (disable on mobile for better performance)
         const heroSection = document.querySelector('.hero');
-        $(window).on('scroll', function() {
-            if(window.scrollY < window.innerHeight) {
-                const scrolled = window.scrollY;
-                $(heroSection).css('background-position-y', `${scrolled * 0.5}px`);
-            }
-        });
+        if (window.innerWidth > 768) { // Only enable parallax on tablets and larger screens
+            $(window).on('scroll', function() {
+                if(window.scrollY < window.innerHeight) {
+                    const scrolled = window.scrollY;
+                    $(heroSection).css('background-position-y', `${scrolled * 0.5}px`);
+                }
+            });
+        }
 
         // Auto-highlight WhatsApp button periodically
         const autoHighlightWhatsApp = () => {
@@ -148,6 +166,26 @@
                 });
             }
         });
+
+        // Handle scroll down indicator visibility
+        const scrollIndicator = document.querySelector('.scroll-down-container');
+        if (scrollIndicator) {
+            // Hide scroll indicator when user scrolls down
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                if (scrollPosition > 100) {
+                    scrollIndicator.style.opacity = '0';
+                    scrollIndicator.style.transition = 'opacity 0.5s ease';
+                } else {
+                    scrollIndicator.style.opacity = '1';
+                }
+            });
+            
+            // Add a pulsing effect to emphasize the scroll indicator after a delay
+            setTimeout(() => {
+                scrollIndicator.classList.add('pulse-attention');
+            }, 3000);
+        }
     });
 
 })(jQuery);

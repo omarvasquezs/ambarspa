@@ -5,6 +5,7 @@
   box-shadow: $shadow-sm;
   transition: $transition;
   padding: 10px 0;
+  width: 100%;
   
   .navbar-brand {
     padding: 0;
@@ -54,6 +55,36 @@
   @include mq-max(tablet) {
     .navbar-collapse {
       margin-top: 1rem;
+      background-color: rgba(255, 255, 255, 0.98);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      
+      .nav-link {
+        padding: 0.8rem 1rem;
+        text-align: center;
+        border-bottom: 1px solid rgba($primary-light, 0.1);
+        
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  
+  @include mq-max(mobile) {
+    padding: 5px 0;
+    
+    .navbar-brand {
+      .logo {
+        h1 {
+          font-size: 1.4rem;
+        }
+        
+        p {
+          font-size: 0.8rem;
+        }
+      }
     }
   }
 }
