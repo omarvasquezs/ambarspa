@@ -25,16 +25,15 @@ footer {
   }
   
   @include mq-max(mobile) {
-    padding: 15px 0;
+    padding: 15px 0; // Keep padding adjustment
     
     .footer-back-to-top {
-      font-size: 1rem;
-      margin: 8px;
+      font-size: 1rem; // Keep specific icon size adjustment
+      margin: 8px; // Keep margin adjustment
     }
     
     p {
-      font-size: 0.8rem;
-      margin-bottom: 5px;
+      margin-bottom: 5px; // Keep margin adjustment
     }
   }
 }

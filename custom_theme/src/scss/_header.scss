@@ -73,18 +73,6 @@
   }
   
   @include mq-max(mobile) {
-    padding: 5px 0;
-    
-    .navbar-brand {
-      .logo {
-        h1 {
-          font-size: 1.4rem;
-        }
-        
-        p {
-          font-size: 0.8rem;
-        }
-      }
-    }
+    padding: 5px 0; // Keep padding adjustment
   }
 }

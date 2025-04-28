@@ -139,12 +139,6 @@
   .navbar {
     padding: 5px 0;
   }
-  .navbar .navbar-brand .logo h1 {
-    font-size: 1.4rem;
-  }
-  .navbar .navbar-brand .logo p {
-    font-size: 0.8rem;
-  }
 }
 
 body {
@@ -194,7 +188,7 @@ section {
 }
 
 .hero {
-  background: url("../../images/hero-background.jpg") no-repeat center center/cover;
+  background: url("/images/hero-background.jpg") no-repeat center center/cover;
   color: #ffffff;
   padding-top: 150px;
   padding-bottom: 100px;
@@ -232,8 +226,8 @@ section {
 }
 @media screen and (max-width: 576px) {
   .hero {
-    padding-top: 85px;
-    padding-bottom: 40px;
+    padding-top: 120px;
+    padding-bottom: 80px;
     height: 100vh; /* Ensure full viewport height on mobile */
   }
   .hero .hero-content {
@@ -251,7 +245,8 @@ section {
 }
 @media screen and (max-width: 375px) {
   .hero {
-    padding-top: 75px;
+    padding-top: 100px;
+    padding-bottom: 60px;
   }
   .hero .hero-content h2 {
     font-size: 1.6rem;
@@ -483,16 +478,6 @@ section#ubicacion .container-fluid {
   color: #8d6e63;
   margin-right: 10px;
 }
-@media screen and (max-width: 576px) {
-  .contact-info {
-    font-size: 0.95rem;
-    margin-bottom: 20px;
-  }
-  .contact-info p {
-    margin-bottom: 15px;
-  }
-}
-
 .contact-link {
   color: #8d6e63;
   font-weight: 600;
@@ -575,26 +560,14 @@ section#ubicacion .container-fluid {
 }
 @media screen and (max-width: 576px) {
   .hero-whatsapp-btn {
-    padding: 10px 20px !important;
-    font-size: 1rem !important;
-    width: auto;
-    max-width: 90%;
-  }
-  .hero-whatsapp-btn i {
-    font-size: 1.2rem !important;
-    margin-right: 5px !important;
-  }
-  .hero-whatsapp-btn:hover, .hero-whatsapp-btn:active {
-    transform: translateY(-5px) scale(1.03) !important;
+    padding: 12px 25px !important;
+    font-size: 1.05rem !important;
   }
 }
 @media screen and (max-width: 375px) {
   .hero-whatsapp-btn {
-    padding: 8px 15px !important;
-    font-size: 0.9rem !important;
-  }
-  .hero-whatsapp-btn i {
-    font-size: 1.1rem !important;
+    padding: 10px 20px !important;
+    font-size: 1rem !important;
   }
 }
 
@@ -897,7 +870,6 @@ footer p {
     margin: 8px;
   }
   footer p {
-    font-size: 0.8rem;
     margin-bottom: 5px;
   }
 }

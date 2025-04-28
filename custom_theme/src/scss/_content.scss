@@ -48,7 +48,7 @@ section {
 
 // Hero Section
 .hero {
-  background: url('../../images/hero-background.jpg') no-repeat center center/cover;
+  background: url('/images/hero-background.jpg') no-repeat center center/cover;
   color: $white;
   padding-top: 150px;
   padding-bottom: 100px;
@@ -89,8 +89,8 @@ section {
   }
   
   @include mq-max(mobile) {
-    padding-top: 85px;
-    padding-bottom: 40px;
+    padding-top: 120px; // Keep padding adjustment
+    padding-bottom: 80px; // Keep padding adjustment
     height: 100vh; /* Ensure full viewport height on mobile */
     
     .hero-content {
@@ -110,7 +110,8 @@ section {
   }
   
   @include mq-max(mobile-small) {
-    padding-top: 75px;
+    padding-top: 100px; // Keep padding adjustment
+    padding-bottom: 60px; // Keep padding adjustment
     
     .hero-content {
       h2 {
@@ -374,12 +375,7 @@ section#ubicacion {
   }
   
   @include mq-max(mobile) {
-    font-size: 0.95rem;
-    margin-bottom: 20px;
-    
-    p {
-      margin-bottom: 15px;
-    }
+     // Removed specific font size adjustments if any were here
   }
 }
 
@@ -470,28 +466,13 @@ section#ubicacion {
   }
   
   @include mq-max(mobile) {
-    padding: 10px 20px !important;
-    font-size: 1rem !important;
-    width: auto;
-    max-width: 90%;
-    
-    i {
-      font-size: 1.2rem !important;
-      margin-right: 5px !important;
-    }
-    
-    &:hover, &:active {
-      transform: translateY(-5px) scale(1.03) !important;
-    }
+    padding: 12px 25px !important; // Keep padding adjustment
+    font-size: 1.05rem !important; // Keep specific font size adjustment for button
   }
   
   @include mq-max(mobile-small) {
-    padding: 8px 15px !important;
-    font-size: 0.9rem !important;
-    
-    i {
-      font-size: 1.1rem !important;
-    }
+    padding: 10px 20px !important; // Keep padding adjustment
+    font-size: 1rem !important; // Keep specific font size adjustment for button
   }
 }
 
